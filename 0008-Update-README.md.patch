@@ -1,0 +1,25 @@
+From 66a7e7b00b973d891d5d3149cf4bb6d3b0ef9ba6 Mon Sep 17 00:00:00 2001
+From: milktime <1014708050@qq.com>
+Date: Wed, 31 Mar 2021 11:05:22 +0800
+Subject: [PATCH 08/12] Update README.md
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 316d681b5..f3a8f8456 100644
+--- a/README.md
++++ b/README.md
+@@ -24,7 +24,7 @@ make modules_install
+ Then you can boot the new kernel through GRUB. Before you boot the new kernel, you shold firstly disable the cgroup-v1 to allow cgroup-v2 using all sub-system:
+ ```bash
+ vim /etc/default/grub
+-# append cgroup_no_v1=all to GRUB_CMDLINE_LINUX
++# append systemd.unified_cgroup_hierarchy=1 to GRUB_CMDLINE_LINUX
+ update-grup
+ ```
+ After you boot the new kernel:
+-- 
+2.44.0
+

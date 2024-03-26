@@ -1,0 +1,17 @@
+From 507969159de1adaeeebf79ccf40f1f591d0d6f14 Mon Sep 17 00:00:00 2001
+From: milktime <1014708050@qq.com>
+Date: Fri, 26 Mar 2021 15:07:52 +0800
+Subject: [PATCH 02/12] Create README.md
+
+---
+ linux-source-4.15.0/{README => README.md} | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename linux-source-4.15.0/{README => README.md} (100%)
+
+diff --git a/linux-source-4.15.0/README b/linux-source-4.15.0/README.md
+similarity index 100%
+rename from linux-source-4.15.0/README
+rename to linux-source-4.15.0/README.md
+-- 
+2.44.0
+

@@ -1,0 +1,25 @@
+From afdc9b44f9f917ac2d5fb44a7b87fa2f0a733fb0 Mon Sep 17 00:00:00 2001
+From: milktime <1014708050@qq.com>
+Date: Mon, 29 Mar 2021 11:18:08 +0800
+Subject: [PATCH 07/12] Update README.md
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index e992fec53..316d681b5 100644
+--- a/README.md
++++ b/README.md
+@@ -13,7 +13,7 @@ If you use other versions of linux, please replace these files.
+ ## how to use
+ You can install the new kernel following the instructions below:
+ ```bash
+-# click Kernel hacking -> Complie-time checks -> conpile the kernel with debug info
++# click Kernel hacking -> Complie-time checks -> compile the kernel with debug info
+ # generate drarf4 debuginfo
+ # provide GDB scripts for kernel debugging
+ make menuconfig
+-- 
+2.44.0
+

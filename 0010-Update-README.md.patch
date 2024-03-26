@@ -1,0 +1,26 @@
+From 506a4687ee24c401089cae34300b9458bb702462 Mon Sep 17 00:00:00 2001
+From: milktime <1014708050@qq.com>
+Date: Tue, 1 Jun 2021 14:40:33 +0800
+Subject: [PATCH 10/12] Update README.md
+
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index f3a8f8456..1b23a0d96 100644
+--- a/README.md
++++ b/README.md
+@@ -5,7 +5,9 @@ Our linux version is 4.15.0 and the directory **linux-source-4.15.0** is the cor
+ ## modified files
+ To implement the new pagecache-limit mechanic, I modified the following files.
+ - include/linux/memcontrol.h
++- include/linux/page_count.h
+ - mm/filemap.c
++- mm/page_count
+ - mm/memcontrol.c
+ - mm/vmscan.c
+ If you use other versions of linux, please replace these files.
+-- 
+2.44.0
+

@@ -1,0 +1,41 @@
+From 21ca56508dbcd1d3f3a0cd82596f55a1c3f4cebc Mon Sep 17 00:00:00 2001
+From: qiyinhao <1014708050@qq.com>
+Date: Wed, 31 Mar 2021 06:38:46 +0000
+Subject: [PATCH 09/12] avoid subtracting to negative number
+
+---
+ linux-source-4.15.0/mm/memcontrol.c   | 2 +-
+ linux-source-4.15.0/mm/page_counter.c | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/linux-source-4.15.0/mm/memcontrol.c b/linux-source-4.15.0/mm/memcontrol.c
+index 4b0667c66..d8f96841a 100644
+--- a/linux-source-4.15.0/mm/memcontrol.c
++++ b/linux-source-4.15.0/mm/memcontrol.c
+@@ -2111,7 +2111,7 @@ retry_pagecache:
+ 		}
+ 	}
+ 	/* 整体回收完毕之后，判断pagecache是否满足条件，如果依旧不满足，再次回收 */
+-	int res_pagecache = 0; // 便于记录 pagecache的可用余量
++	unsigned int res_pagecache = 0; // 便于记录 pagecache的可用余量
+ 	if(pagecache_overflow == 1 && (res_pagecache = pagecache_cgroup_margin(pagecache_over_limit)) < nr_pages){
+ 
+ 		printk(KERN_ALERT "%s %s %d, ###count: %d, limit: %d", __func__, __FILE__, __LINE__, page_counter_read(&pagecache_over_limit->pagecache), READ_ONCE(pagecache_over_limit->pagecache.limit));
+diff --git a/linux-source-4.15.0/mm/page_counter.c b/linux-source-4.15.0/mm/page_counter.c
+index 2a8df3ad6..0483edf87 100644
+--- a/linux-source-4.15.0/mm/page_counter.c
++++ b/linux-source-4.15.0/mm/page_counter.c
+@@ -23,6 +23,10 @@ void page_counter_cancel(struct page_counter *counter, unsigned long nr_pages)
+ 	long new;
+ 
+ 	new = atomic_long_sub_return(nr_pages, &counter->count);
++	/* avoid subtracting to negative number */
++	if(new < 0)
++		atomic_long_set(&counter->count, 0);
++
+ 	/* More uncharges than charges? */
+ 	WARN_ON_ONCE(new < 0);
+ }
+-- 
+2.44.0
+
